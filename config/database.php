@@ -54,14 +54,14 @@ return [
             'engine' => null,
         ],
 
-        'mhsdb' => [
+        'frontdb' => [
             'driver' => 'mysql',
-            'host' => env('MHSDB_HOST', '127.0.0.1'),
-            'port' => env('MHSDB_PORT', '3306'),
-            'database' => env('MHSDB_DATABASE', 'forge'),
-            'username' => env('MHSDB_USERNAME', 'forge'),
-            'password' => env('MHSDB_PASSWORD', ''),
-            'unix_socket' => env('MHSDB_SOCKET', ''),
+            'host' => env('FRONTDB_HOST', '127.0.0.1'),
+            'port' => env('FRONTDB_PORT', '3306'),
+            'database' => env('FRONTDB_DATABASE', 'forge'),
+            'username' => env('FRONTDB_USERNAME', 'forge'),
+            'password' => env('FRONTDB_PASSWORD', ''),
+            'unix_socket' => env('FRONTDB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
