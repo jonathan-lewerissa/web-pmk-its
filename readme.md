@@ -25,6 +25,5 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 
 This project uses two main database; one for managing users and their data, another for managing the landing page content. The files for migrating these database are located in the migrations folder.
 ```
-php artisan migrate --database="mysql" --path="database/migrations/mysql"
 php artisan migrate --database="frontdb" --path="database/migrations/frontdb"
 ```
