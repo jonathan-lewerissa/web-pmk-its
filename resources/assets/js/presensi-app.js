@@ -17,11 +17,13 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     mode: 'history',
     routes: [
-        { path: '/presensi/:id', component: PresensiForm, props: JSON.parse(window.__INITIAL_STATE__)  },
+        { 
+            path: '/presensi/:id',
+            component: PresensiForm,
+            props: JSON.parse(window.__INITIAL_STATE__),
+        },
     ]
 });
-
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

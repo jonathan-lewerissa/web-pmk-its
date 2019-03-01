@@ -1,20 +1,28 @@
 <template>
-    <form action="" @submit.prevent="sendPresensi">
-        <div class="form-group">
-            <input type="text" placeholder="NRP Baru" v-model='nrp'>
-        </div>
-        <h3>{{ count }}</h3>
-    </form>
+    <div>
+        <h1>{{ this.event_details.title }}</h1>
+        <h2>{{ this.event_details.description }}</h2>
+        <h2>{{ this.clock }}</h2>
+        <h3>{{ this.starting }}</h3>
+        <form action="" @submit.prevent="sendPresensi">
+            <div class="form-group">
+                <input type="text" placeholder="NRP Baru" v-model='nrp'>
+            </div>
+            <h3>{{ count }}</h3>
+        </form>
+    </div>
 </template>
 
 <script>
     export default {
-        props: ['counter'],
+        props: ['counter','event_details'],
         data() {
             return {
-                event_token: this.$route.params.id,
                 nrp: '',
                 count: this.counter,
+                event_token: this.event_details.event_url,
+                clock: moment().format('LTS'),
+                starting: moment(this.event_details.event_start).format("dddd, MMMM Do YYYY"),
             }
         },
         methods: {
@@ -51,6 +59,11 @@
                     this.nrp = ''
                 })
             }
+        },
+        mounted: function() {
+            setInterval(() => {
+                this.clock = moment().format('LTS')
+            }, 1000);
         }
     }
 </script>
