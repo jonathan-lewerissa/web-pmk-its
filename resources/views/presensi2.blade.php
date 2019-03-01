@@ -13,8 +13,13 @@
 
         <title>{{ $event->title }}</title>
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <style>
+            .bg {
+                background: url({{asset('/img/team.jpeg')}})
+            }
+        </style>
     </head>
-    <body>
+    <body class="bg">
         <div id="app">
             <router-view></router-view>
         </div>
