@@ -23,3 +23,5 @@ Route::middleware('auth:api')->group(function () {
 
 Route::post('/login', 'AuthController@login');
 Route::post('/register', 'AuthController@register');
+
+Route::post('/presensi','PresensiController@catat');

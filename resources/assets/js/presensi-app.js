@@ -10,13 +10,18 @@ require('./bootstrap');
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import PresensiForm from './components/PresensiForm.vue';
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({
+    mode: 'history',
     routes: [
-        { path: '/presensi/:id',  }
+        { path: '/presensi/:id', component: PresensiForm, props: JSON.parse(window.__INITIAL_STATE__)  },
     ]
 });
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -24,10 +29,10 @@ const router = new VueRouter({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-// const router = 
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router
 });

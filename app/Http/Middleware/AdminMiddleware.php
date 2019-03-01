@@ -15,9 +15,9 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(! backpack_auth()->user()->hasRole('admin')) {
-            return response(trans('backpack::base.unauthorized'), 401);
-        }
+        // if(! backpack_auth()->user()->hasRole('admin')) {
+        //     return response(trans('backpack::base.unauthorized'), 401);
+        // }
         
         return $next($request);
     }

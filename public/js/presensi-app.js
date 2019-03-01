@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 39);
+/******/ 	return __webpack_require__(__webpack_require__.s = 46);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -48507,16 +48507,21 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 39 */
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(40);
-__webpack_require__(44);
-module.exports = __webpack_require__(45);
+module.exports = __webpack_require__(47);
 
 
 /***/ }),
-/* 40 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48524,6 +48529,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_PresensiForm_vue__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_PresensiForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_PresensiForm_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -48536,10 +48543,13 @@ __webpack_require__(9);
 
 
 
+
+
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
-    routes: [{ path: '/presensi/:id' }]
+    mode: 'history',
+    routes: [{ path: '/presensi/:id', component: __WEBPACK_IMPORTED_MODULE_2__components_PresensiForm_vue___default.a, props: JSON.parse(window.__INITIAL_STATE__) }]
 });
 
 /**
@@ -48548,24 +48558,24 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('example-component', __webpack_require__(41));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-// const router = 
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
-    el: '#app'
+    el: '#app',
+    router: router
 });
 
 /***/ }),
-/* 41 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(38)
 /* script */
-var __vue_script__ = __webpack_require__(42)
+var __vue_script__ = __webpack_require__(49)
 /* template */
-var __vue_template__ = __webpack_require__(43)
+var __vue_template__ = __webpack_require__(50)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48582,7 +48592,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/ExampleComponent.vue"
+Component.options.__file = "resources/assets/js/components/PresensiForm.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -48591,9 +48601,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7168fb6a", Component.options)
+    hotAPI.createRecord("data-v-a9547eec", Component.options)
   } else {
-    hotAPI.reload("data-v-7168fb6a", Component.options)
+    hotAPI.reload("data-v-a9547eec", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48604,7 +48614,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 42 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48618,74 +48628,105 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
+    props: ['counter'],
+    data: function data() {
+        return {
+            event_token: this.$route.params.id,
+            nrp: '',
+            count: this.counter
+        };
+    },
+
+    methods: {
+        sendPresensi: function sendPresensi() {
+            var _this = this;
+
+            axios.post('/api/presensi', {
+                event_token: this.event_token,
+                nrp: this.nrp
+            }).then(function (res) {
+                _this.count = res.data.count;
+                Swal.fire({
+                    type: 'success',
+                    title: 'Success!',
+                    text: 'Hi! Have a wonderful day with Jesus!',
+                    timer: 3000
+                });
+            }).catch(function (err) {
+                if (err.response.status === 500) {
+                    if (err.response.data.errorInfo[1] === 1062) Swal.fire({
+                        type: 'error',
+                        title: 'Oopsie!',
+                        text: 'You have been recorded before!'
+                    });
+                } else {
+                    console.error(err.response);
+                }
+            }).then(function () {
+                _this.nrp = '';
+            });
+        }
     }
 });
 
 /***/ }),
-/* 43 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "form",
+    {
+      attrs: { action: "" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.sendPresensi($event)
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.nrp,
+              expression: "nrp"
+            }
+          ],
+          attrs: { type: "text", placeholder: "NRP Baru" },
+          domProps: { value: _vm.nrp },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.nrp = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("h3", [_vm._v(_vm._s(_vm.count))])
+    ]
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _vm._v(
-                "\n                    I'm an example component!\n                "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7168fb6a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-a9547eec", module.exports)
   }
 }
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
