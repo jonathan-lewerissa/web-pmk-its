@@ -10,7 +10,6 @@
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ mix('css/presensi-app.css') }}" >
-        <link rel="stylesheet" href="{{ asset('css/presensi-style.css') }}">
 
         <title>{{ $event->title }}</title>
         <meta name="csrf-token" content="{{ csrf_token() }}">
