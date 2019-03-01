@@ -1,15 +1,23 @@
 <template>
-    <div>
-        <h1>{{ this.event_details.title }}</h1>
-        <h2>{{ this.event_details.description }}</h2>
-        <h2>{{ this.clock }}</h2>
-        <h3>{{ this.starting }}</h3>
-        <form action="" @submit.prevent="sendPresensi">
-            <div class="form-group">
-                <input type="text" placeholder="NRP Baru" v-model='nrp'>
+    <div class="container">
+        <div>
+            <h1 id="title"><b>{{ this.event_details.title }}</b></h1>
+        </div>
+        <div class="login-box">
+            <div class="box-header">
+                <h2>Attendance</h2>
             </div>
-            <h3>{{ count }}</h3>
-        </form>
+            <form action="" @submit.prevent="sendPresensi">
+                <h3><b><i>{{ this.event_details.description }}</i></b></h3>
+                <h4><b>{{ this.starting }}</b></h4>
+                <div id="txt">{{ this.clock }}</div>
+                <h4><i>Total:</i></h4>
+                <h3>{{ count }}</h3>
+                <input type="text" name="nrp" minlength="14" maxlength="14" placeholder="NRP Baru" v-model='nrp'>
+            </form>
+            <br>
+            <h5><i>Copyright&copy; PMK ITS <b>2019</b></i></h5>
+        </div>
     </div>
 </template>
 

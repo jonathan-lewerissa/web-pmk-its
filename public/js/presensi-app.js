@@ -65722,6 +65722,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['counter', 'event_details'],
@@ -65783,28 +65791,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v(_vm._s(this.event_details.title))]),
+  return _c("div", { staticClass: "container" }, [
+    _c("div", [
+      _c("h1", { attrs: { id: "title" } }, [
+        _c("b", [_vm._v(_vm._s(this.event_details.title))])
+      ])
+    ]),
     _vm._v(" "),
-    _c("h2", [_vm._v(_vm._s(this.event_details.description))]),
-    _vm._v(" "),
-    _c("h2", [_vm._v(_vm._s(this.clock))]),
-    _vm._v(" "),
-    _c("h3", [_vm._v(_vm._s(this.starting))]),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        attrs: { action: "" },
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.sendPresensi($event)
+    _c("div", { staticClass: "login-box" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          attrs: { action: "" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.sendPresensi($event)
+            }
           }
-        }
-      },
-      [
-        _c("div", { staticClass: "form-group" }, [
+        },
+        [
+          _c("h3", [
+            _c("b", [_c("i", [_vm._v(_vm._s(this.event_details.description))])])
+          ]),
+          _vm._v(" "),
+          _c("h4", [_c("b", [_vm._v(_vm._s(this.starting))])]),
+          _vm._v(" "),
+          _c("div", { attrs: { id: "txt" } }, [_vm._v(_vm._s(this.clock))]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _c("h3", [_vm._v(_vm._s(_vm.count))]),
+          _vm._v(" "),
           _c("input", {
             directives: [
               {
@@ -65814,7 +65834,13 @@ var render = function() {
                 expression: "nrp"
               }
             ],
-            attrs: { type: "text", placeholder: "NRP Baru" },
+            attrs: {
+              type: "text",
+              name: "nrp",
+              minlength: "14",
+              maxlength: "14",
+              placeholder: "NRP Baru"
+            },
             domProps: { value: _vm.nrp },
             on: {
               input: function($event) {
@@ -65825,14 +65851,39 @@ var render = function() {
               }
             }
           })
-        ]),
-        _vm._v(" "),
-        _c("h3", [_vm._v(_vm._s(_vm.count))])
-      ]
-    )
+        ]
+      ),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _vm._m(2)
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-header" }, [
+      _c("h2", [_vm._v("Attendance")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h4", [_c("i", [_vm._v("Total:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [
+      _c("i", [_vm._v("Copyright© PMK ITS "), _c("b", [_vm._v("2019")])])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
