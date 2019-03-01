@@ -15,7 +15,11 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <style>
             .bg {
-                background: url({{asset('/img/team.jpeg')}})
+                background: url({{asset('/img/team.jpeg')}});
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
             }
         </style>
     </head>
