@@ -25,6 +25,11 @@
                     <br>
                     <input required type="tel" placeholder="Your phone number" v-model='telp'>
                 </div>
+                <div v-else-if="this.event_details.type === 'PM'">
+                    <input required type="text" name="nrp" minlength="14" maxlength="14" placeholder="NRP Baru" v-model='nrp'>
+                    <br>
+                    <input required type="text" name="nama" placeholder="Nama Lengkap" v-model="nama">
+                </div>
                 <div v-else>
                     <input type="text" name="nrp" minlength="14" maxlength="14" placeholder="NRP Baru" v-model='nrp'>
                 </div>

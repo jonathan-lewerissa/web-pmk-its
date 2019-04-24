@@ -35,7 +35,8 @@ class PresensiController extends Controller
                 ]);
             } else {
                 $inject = $event->presensis()->create([
-                    'nrp' => $request->nrp
+                    'nrp' => $request->nrp,
+                    'nama' => $request->nama
                 ]);
             }
             

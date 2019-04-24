@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Presensi extends Model
 {
-    protected $fillable = ['nrp','photo_url'];
+    protected $fillable = ['nrp','nama'];
 
     public function event()
     {

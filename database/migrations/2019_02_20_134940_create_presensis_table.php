@@ -16,7 +16,7 @@ class CreatePresensisTable extends Migration
         Schema::create('presensis', function (Blueprint $table) {
             // $table->increments('id');
             $table->string('nrp');
-            $table->string('photo_url')->nullable();
+            $table->string('nama')->nullable();
             $table->unsignedInteger('event_id');
             $table->timestamps();
 
