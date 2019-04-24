@@ -14,7 +14,7 @@
                 <h3><b><i>{{ this.event_details.description }}</i></b></h3>
                 <h4><b>{{ this.starting }}</b></h4>
                 <div id="txt">{{ this.clock }}</div>
-                <div v-if="this.event_details.type !== 'PU'">
+                <div v-if="this.event_details.type === 'PJ'">
                     <h4><i>Total:</i></h4>
                     <h3>{{ count }}</h3>
                 </div>

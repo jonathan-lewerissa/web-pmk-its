@@ -31,6 +31,7 @@ class EventExport implements FromQuery, WithMapping
         return [
             $presensi->created_at,
             $presensi->nrp,
+            $presensi->nama
         ];
     }
 }
