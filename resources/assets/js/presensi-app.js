@@ -18,7 +18,7 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         { 
-            path: '/presensi/:id',
+            path: '/presensi/e/:id',
             component: PresensiForm,
             props: JSON.parse(window.__INITIAL_STATE__),
         },

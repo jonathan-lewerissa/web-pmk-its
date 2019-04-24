@@ -19,4 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/presensi/{id}','PresensiController@index')->where('id','.*');
+Route::get('/presensi/e/{id}','PresensiController@index')->where('id','.*');
+Route::get('/presensi/d/{id}','PresensiController@retrieveAllExcel')->where('id','.*');

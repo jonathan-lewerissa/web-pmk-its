@@ -29,6 +29,9 @@ class EventCrudController extends CrudController
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/event');
         $this->crud->setEntityNameStrings('event', 'events');
 
+        // $this->crud->enableDetailsRow();
+        // $this->crud->allowAccess('details_row');
+
         /*
         |--------------------------------------------------------------------------
         | CrudPanel Configuration
@@ -47,6 +50,14 @@ class EventCrudController extends CrudController
             'type' => 'text',
         ]);
         $this->crud->addField([
+            'name' => 'type',
+            'label' => 'Event Type',
+            'type' => 'select_from_array',
+            'options' => ['PJ' => 'Persekutuan Jumat', 'PU' => 'Paskah Umum', 'PM' => 'Paskah Mahasiswa'],
+            'allows_null' => false,
+            'default' => 'PJ',
+        ]);
+        $this->crud->addField([
             'name' => 'event_date_range',
             'start_name' => 'event_start',
             'end_name' => 'event_end',
@@ -63,12 +74,29 @@ class EventCrudController extends CrudController
 
         $this->crud->addColumns([
             [
+                'name' => 'event_start',
+                'label' => 'Event Date and Time',
+                'type' => 'datetime',
+            ],
+            [
                 'name' => 'title',
                 'label' => 'Event Title',
             ],
             [
                 'name' => 'description',
                 'label' => 'Event Description',
+            ],
+            [
+                'name' => 'count',
+                'label' => 'People count',
+                'type' => 'closure',
+                'function' => function($event) {
+                    if($event->type == 'PU'){
+                        return $event->presensi_umums->count();
+                    } else {
+                        return $event->presensis->count();
+                    }
+                }
             ],
             [
                 'name' => 'event_url',
@@ -78,6 +106,9 @@ class EventCrudController extends CrudController
                 'limit' => 120,
             ],
         ]);
+        $this->crud->orderBy('event_start');
+
+        $this->crud->addButtonFromModelFunction('line','open_google','openGoogle','beginning');
 
         // add asterisk for fields that are required in EventRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

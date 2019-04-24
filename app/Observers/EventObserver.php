@@ -14,6 +14,12 @@ class EventObserver
      */
     public function creating(Event $event)
     {
-        $event->event_url = str_random(40);
+        while(1){
+            $checker = str_random(5);
+            if(!Event::where('event_url',$checker)->first()){
+                $event->event_url = $checker;
+                break;
+            }
+        }   
     }
 }

@@ -15,7 +15,9 @@
         "laravel/framework": "5.5.*",
         "laravel/passport": "~4.0",
         "laravel/tinker": "~1.0",
-        "paragonie/random_compat": "2.*"
+        "maatwebsite/excel": "^3.1",
+        "paragonie/random_compat": "2.*",
+        "usmanhalalit/laracsv": "1.*@dev"
     },
     "require-dev": {
         "backpack/generators": "^1.2",
