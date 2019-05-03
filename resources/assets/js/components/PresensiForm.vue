@@ -2,7 +2,7 @@
     <div class="container">
         <div>
             <h1 id="title">
-                <b v-if="this.event_details.type === 'PU' || this.event_details.type === 'PM'">Persekutuan Jumat</b>
+                <b v-if="this.event_details.type === 'PU' || this.event_details.type === 'PM'">Paskah PMK ITS</b>
                 <b v-else>Persekutuan Jumat</b>
             </h1>
         </div>
