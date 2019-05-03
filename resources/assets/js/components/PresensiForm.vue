@@ -2,8 +2,8 @@
     <div class="container">
         <div>
             <h1 id="title">
-                <b v-if="this.event_details.title == 'PJ'">Persekutuan Jumat</b>
-                <b v-else>Paskah PMK ITS</b>
+                <b v-if="this.event_details.type === 'PU' || this.event_details.type === 'PM'">Persekutuan Jumat</b>
+                <b v-else>Persekutuan Jumat</b>
             </h1>
         </div>
         <div class="login-box">
@@ -21,7 +21,7 @@
                 <div v-if="this.event_details.type === 'PU'">
                     <input required type="text" name="nama" placeholder="Your name" v-model='nama'>
                     <br>
-                    <input type="text" v-model='asal' placeholder="Where are you from?">
+                    <input required type="text" placeholder="Where are you from?" v-model='asal'>
                     <br>
                     <input required type="tel" placeholder="Your phone number" v-model='telp'>
                 </div>
@@ -69,7 +69,7 @@
                 .then(res => {
                     this.count = res.data.count;
                     let textToDisplay = '';
-                    if(this.event_details.type === 'PU') {
+                    if(this.event_details.type === 'PU' || this.event_details.type === 'PM') {
                         textToDisplay = 'Hi '+this.nama+'! Have a wonderful day with Jesus!'
                     }
                     else {
